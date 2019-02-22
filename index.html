@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+    <script src="phaser.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    // Setup all the components that will be used in the game here
+
+    // Setup Game development environment for PHaserJS
+
+    // Preload Function
+
+    function preload() {
+        // Preload PLayer, coin, starField, coin_touch_audio
+
+    }
+
+    // Create Function 
+
+    function create() {
+        // Establish Physics Engine
+
+        // Add Background TileSprite and player sprite
+
+        // Set Anchor and Scale of the player
+
+        // Enable physics on player
+
+        // Add score text
+
+        // Add coin sound
+
+        // Create multiple coins using coin group
+
+        // Create bullets group
+
+        // Set Spacebar for shooting bullets
+
+        // Set cursor for moving the player
+
+    }
+
+    // Update Function
+
+    function update() {
+
+        // Update the motion of background tileSprite using tilePosition parameter
+
+        // Update the score value using the setText function on the score variable
+
+        // Update player velocity
+
+        // Update player angle
+
+
+    }
+
+    // Render Function
+
+    function render() {
+
+        // Add the player coin collision logic
+    
+        // If spacebar is pressed then call the shoot function to shoot the bullet
+    }
+
+    // Implement handler function for player coin collision
+    function handler(p, c) { 
+            //console.log("handler called");
+            return false;
+    }
+    // Implement processor function for player coin collision
+    function processor(p, c) {
+        // Increase the score
+
+        // put coin at a random place by updating it's x and y coordinate
+
+        // PLay coin sound
+
+        return false; // If returned true then the handler will be called
+    }
+
+    function shoot() {
+        // Create a new bullter from the bullet group
+
+        // Set the anchor and scale of the bullet
+
+        // Enable physics on the bullet
+
+        // Update bullet velocity's x and y values
+    }
+
+</script>
+</html>
