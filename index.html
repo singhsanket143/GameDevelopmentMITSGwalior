@@ -42,9 +42,12 @@
 
     function create() {
         // Establish Physics Engine
-
+        // game.physics.StartSystem(Phaser.Physics.Arcade);
         // Add Background TileSprite and player sprite
-
+        
+        space = game.add.tileSprite(0,0, window.innerWidth, window.innerHeight, 'space');
+        player = game.add.sprite(200, 400, 'player');
+        player.scale.set(5);
         // Set Anchor and Scale of the player
 
         // Enable arcade physics on player
