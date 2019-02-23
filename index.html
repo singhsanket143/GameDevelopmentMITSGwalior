@@ -17,14 +17,25 @@
 </body>
 <script>
     // Setup all the components that will be used in the game here
+    var space;
+    var player;
+    var bullets;
+    var coins;
+    var shooter;
+    var cursor;
+    var game;
 
     // Setup Game development environment for PHaserJS
-
+    game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'Space-Shooter', {preload: preload, create: create, update: update, render: render});
     // Preload Function
 
     function preload() {
         // Preload PLayer, coin, starField, coin_touch_audio
-
+        game.load.image('player', 'L1/thrust_ship.png');
+        game.load.image('coin', 'L1/coin.png');
+        game.load.image('space', 'L1/starfield1.png');
+        game.load.image('buller', 'L1/rgblaser.png');
+        game.load.audio('coin_audio', 'L1/metal.wav');
     }
 
     // Create Function 
