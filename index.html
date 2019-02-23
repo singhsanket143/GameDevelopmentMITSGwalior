@@ -116,10 +116,25 @@
             player.body.angularVelocity = 0;
         }
 
-
         // Add the player motion and weapon logic from docs
         if(shooter.isDown) {
             bullet.fire();
+        }
+
+        if(player.x > window.innerWidth) {
+            player.x = 10;
+        }
+        if(player.x < 0) {
+            player.x = window.innerWidth-100;
+        }
+
+        if(player.y > window.innerHeight) {
+            console.log(player.y, "OUT");
+            player.y = 10;
+        }
+
+        if(player.y < 0) {
+            player.y = window.innerHeight - 10;
         }
 
     }
@@ -129,24 +144,47 @@
     function render() {
 
         // Add the player coin collision logic
-        
+        game.physics.arcade.collide(player, coins, handler, processor, this);
+        game.physics.arcade.overlap(bullet.bullets, coins, BulltetHandler, this.BulletProcessor,null, this);
         // If spacebar is pressed then call the shoot function to shoot the bullet
+    }
+
+    function BulltetHandler(b, c) {
+        score++;
+        c.x = game.rnd.between(0, 800);
+        c.y = game.rnd.between(0, 600);
+        coin_sound.play();
+        console.log("Bullet hit");
+        return false;
+    }
+
+    function BulletProcessor(b, c) {
+        // Increase the score
+        // score++;
+        // put coin at a random place by updating it's x and y coordinate
+        
+        // PLay coin sound
+        // coin_sound.play();
+
+        return true;
     }
 
     // Implement handler function for player coin collision
     function handler(p, c) { 
-            //console.log("handler called");
+            console.log("handler called");
             return false;
     }
     // Implement processor function for player coin collision
     function processor(p, c) {
         // Increase the score
-
+        score--;
         // put coin at a random place by updating it's x and y coordinate
-
+        c.x = game.rnd.between(0, 800);
+        c.y = game.rnd.between(0, 600);
         // PLay coin sound
+        coin_sound.play();
 
-        return false; // If returned true then the handler will be called
+        return true; // If returned true then the handler will be called
     }
 
     function shoot() {
