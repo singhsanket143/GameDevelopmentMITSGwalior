@@ -21,9 +21,13 @@
     var player;
     var bullets;
     var coins;
+    var singlecoin;
     var shooter;
     var cursor;
     var game;
+    var score_text;
+    var score;
+    var coin_sound;
 
     // Setup Game development environment for PHaserJS
     game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'Space-Shooter', {preload: preload, create: create, update: update, render: render});
@@ -49,15 +53,20 @@
         player = game.add.sprite(200, 400, 'player');
         player.scale.set(5);
         // Set Anchor and Scale of the player
-
+        player.anchor.set(0.5, 0.5);
         // Enable arcade physics on player
-
+        game.physics.arcade.enable(player);
         // Add score text
-
+        score_text = game.add.text(200, 200, "Score: ", {fill: "#fff", font: "60px Aerial"});
+        
         // Add coin sound
-
+        coin_sound = game.add.audio('coin_audio');
         // Initialize coin group
-
+        coins = game.add.group();
+        for(var i=0;i<20;i++) {
+            
+            singlecoin = coins.create(game.rnd.between(0, window.innerWidth), game.rnd.between(0, window.innerHeight), 'coin');
+        }
         // Set Scale to the whole coin group
 
         // Create multiple coins using coin group and enable arcade physics on each of them
